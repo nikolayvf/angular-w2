@@ -1,0 +1,60 @@
+<!-- <input type="text"> -->
+
+<div class="book-wrapper">
+  <div class="navigation">
+    <button (click)="processPrevBook()" class="button">Предишна книга</button>
+    <button (click)="processNextBook()" class="button">Следваща книга</button>
+  </div>
+  <div class="book-placeholder">
+    <div class="book-placeholder--link">
+      {{ "Име на книгата: " + bookCollection[index].book }}
+    </div>
+
+    <div class="book-placeholder--title">
+      {{ bookCollection[index].description || "Няма описание" }}
+    </div>
+
+    <div class="book-placeholder--author">
+      {{
+        "Автор на книгата: " + bookCollection[index].author ||
+          "Неизвестен Автор"
+      }}
+    </div>
+
+    <div class="book-placeholder--rating">
+      {{ showRating(bookCollection[index].rating) || "Няма рейтинг" }}
+    </div>
+
+    <div class="book-data">
+      <input
+        (input)="processInputBookBook($event)"
+        type="text"
+        placeholder="Заглавие на книгата"
+      />
+      <input
+        (input)="processInputBookDescription($event)"
+        type="text"
+        placeholder="Описание на книгата"
+      />
+      <input
+        (input)="processInputBookAuthor($event)"
+        type="text"
+        placeholder="Автор на книгата"
+      />
+
+      <select
+        (change)="processInputBookRating($event)"
+        class="book-rating-dropdown"
+      >
+        <option value="">Изберете рейтинг</option>
+        <option value="1">1 ⭐️</option>
+        <option value="2">2 ⭐️⭐️</option>
+        <option value="3">3 ⭐️⭐️⭐️</option>
+        <option value="4">4 ⭐️⭐️⭐️⭐️</option>
+        <option value="5">5 ⭐️⭐️⭐️⭐️⭐️</option>
+      </select>
+
+      <button (click)="processSaveBookData()" class="button-rate">Оцени</button>
+    </div>
+  </div>
+</div>
