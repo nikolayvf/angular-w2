@@ -31,11 +31,12 @@
         type="text"
         placeholder="Заглавие на книгата"
       />
-      <input
+      <textarea
         (input)="processInputBookDescription($event)"
-        type="text"
         placeholder="Описание на книгата"
-      />
+        class="textarea-class"
+      ></textarea>
+
       <input
         (input)="processInputBookAuthor($event)"
         type="text"
