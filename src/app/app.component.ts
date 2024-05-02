@@ -92,6 +92,7 @@ export class AppComponent {
   public processInputBookRating(event) {
     this.tempRating = parseFloat(event.target.value);
     console.log(this.tempRating);
+    // ddd
   }
 
   public showRating(rating) {
