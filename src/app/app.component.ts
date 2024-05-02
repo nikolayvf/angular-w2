@@ -56,21 +56,17 @@ export class AppComponent {
 
   public processPrevBook() {
     this.index--;
-
     if (this.index < 0) {
       this.index = this.bookCollection.length - 1;
     }
-
     this.resetTempData();
   }
 
   public processNextBook() {
     this.index++;
-
     if (this.index >= this.bookCollection.length) {
       this.index = 0;
     }
-
     this.resetTempData();
   }
 
@@ -91,13 +87,23 @@ export class AppComponent {
 
   public processInputBookRating(event) {
     this.tempRating = parseFloat(event.target.value);
-    console.log(this.tempRating);
-    // ddd
   }
 
-  public showRating(rating) {
+  // public showRating(rating) {
+  //   let starRating = '';
+  //   for (let index = 0; index < Math.ceil(rating); index++) {
+  //     starRating += '⭐️';
+  //   }
+  //   return starRating;
+  // }
+
+  public getCurrentRating() {
+    return this.showRating(this.bookCollection[this.index].rating);
+  }
+
+  public showRating(rating: number) {
     let starRating = '';
-    for (let index = 0; index < Math.ceil(rating); index++) {
+    for (let i = 0; i < Math.ceil(rating); i++) {
       starRating += '⭐️';
     }
     return starRating;
@@ -107,13 +113,12 @@ export class AppComponent {
     this.bookCollection[this.index].book = this.tempBook.value;
     this.bookCollection[this.index].description = this.tempDescription.value;
     this.bookCollection[this.index].author = this.tempAuthor.value;
-    this.bookCollection[this.index].rating = this.tempRating.value;
+    this.bookCollection[this.index].rating = this.tempRating;
+
+    this.getCurrentRating();
   }
 
   private resetTempData() {
-    // this.tempTitle  = '';
-    // this.tempNote   = '';
-
     this.tempBook.value = '';
     this.tempDescription.value = '';
     this.tempAuthor.value = '';
